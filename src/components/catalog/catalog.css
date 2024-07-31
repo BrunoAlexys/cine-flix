@@ -1,0 +1,51 @@
+.container-catalog {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog {
+  width: 100%;
+  height: 400px;
+  background-image: url("../../assets/Mask_group.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & h1 {
+    font-size: 60px;
+    color: #fff;
+    font-weight: 600;
+  }
+
+}
+
+.container-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    & .card {
+        width: 210px;
+        height: 300px;
+        background-color: #fff;
+    }
+
+    & img {
+        width: 100%;
+        height: 100%;
+
+    }
+}
+
+.container-paginated {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  padding: 10px;
+}
+

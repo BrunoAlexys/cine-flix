@@ -1,0 +1,18 @@
+.input-defult {
+    width: 336px;
+    height: 44px;
+    background-color: #6B7892;
+    border: none;
+    border-radius: 22px;
+    color: var(--secondary-color);
+    padding: 10px;
+    text-align: left;
+    font-family: 'Hind Colombo', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+
+}
+
+.input-defult::placeholder {
+    color: #A8AFBF;
+}
