@@ -82,3 +82,20 @@ export const getPaginatedMovies = async (page: number): Promise<PaginatedMoviesR
         throw error;
     }
 }
+
+export const getMoviesGenere = async (idGenere: number): Promise<Movie[]> => {
+    try {
+        const response = await req.get<MovieResponse>('https://api.themoviedb.org/3/discover/movie', {
+            params: {
+                api_key: apiKey,
+                language: 'pt-BR',
+                with_genres: idGenere
+            }
+        });
+
+        return response.data.results;
+    } catch (error) {
+        console.error("Erro ao buscar os filmes de ação:", error);
+        throw error;
+    }
+}
