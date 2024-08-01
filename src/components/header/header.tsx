@@ -16,9 +16,9 @@ export const Header = () => {
                 <Link to={`/`}><img className='logo' src={Logo} alt="Logo do site cine flix" /></Link>
             </div>
             <div className="menu">
+                <p><Link style={{color: 'white'}} to={`/`}>Home</Link></p>
                 <p><Link style={{color: 'white'}} to={`/catalog/movies`}>Filmes</Link></p>
                 <p><Link style={{color: 'white'}} to={`/catalog/series`}>Séries</Link></p>
-                <p><Link style={{color: 'white'}} to={`/catalog/realeases`}>Lançamentos</Link></p>
                 <p>Catálago</p>
             </div>
             <div className="pesquisa">

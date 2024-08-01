@@ -28,11 +28,13 @@ export const Catalog = () => {
         setPage(1);
     }, [title, type]);
 
+    {movies.isLoading || series.isLoading && <div className='loading'>Carregando...</div>}
     return (
         <div className='container-catalog'>
             <div className='catalog'>
                 <h1>{title}</h1>
             </div>
+            
             <div className='container-card'>
                 {data &&
                     data.results.map(item => (
