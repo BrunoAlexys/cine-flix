@@ -1,0 +1,96 @@
+.footer {
+    width: 100%;
+    height: 240px;
+    background-color: #0E192F;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 45px;
+    font-family: "hind madurai", sans-serif;
+}
+
+.linha {
+    margin-top: 20px;
+    width: 95%;
+    margin-bottom: 8px;
+    border-bottom: #FFFFFF 4px solid;
+}
+
+.navegacao {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-start;
+
+    color: white;
+    width: 100%;
+
+}
+
+.logo {
+    display: flex;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+
+}
+
+.logo img {
+    width: 64px;
+    height: 64px;
+
+}
+
+.geral {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+.geral li {
+    font-weight: 100;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.conta {
+    flex: 2;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+.conta li {
+    font-weight: 100;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.termos {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+.termos li {
+    font-weight: 100;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.rodape-direitos {
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+}

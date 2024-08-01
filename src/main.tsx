@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 import { Header } from './components/header/header.tsx'
 import { QueryProvider } from './utils/queryClientProvider.tsx'
 import { MainRouters } from './routers/MainRouters.tsx'
+import Rodape from './components/rodape/rodape.tsx'
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -12,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Header />
         <MainRouters />
+        <Rodape />
       </BrowserRouter>
     </QueryProvider>
   </React.StrictMode>,

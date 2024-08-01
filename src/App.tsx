@@ -44,7 +44,7 @@ function App() {
           )}
       />
       <ContentSlider
-          title="Popular TV Shows"
+          title="Melhores Séries"
           data={tv.data}
           isLoading={tv.isLoading}
           settings={settings}
