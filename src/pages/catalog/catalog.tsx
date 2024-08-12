@@ -5,6 +5,7 @@ import { usePaginatedMovies } from '../../service/movies/queriesMovies';
 import { usePaginatedTv } from '../../service/series/queriesSeries';
 import { Pagination } from '@mui/material';
 import { Link } from 'react-router-dom';
+import ImageDefalte from '../../assets/DeadpoolNotFound.png';
 
 type CatalogType = {
     type: 'movies' | 'series';
@@ -40,7 +41,7 @@ export const Catalog = () => {
                     data.results.map(item => (
                         <div className='card' key={item.id}>
                             <Link to={`/avaliation/${type}/${item.id}`}>
-                                <img src={`${apiImageUrl}${item.poster_path}`} alt="" />
+                                <img src={item.poster_path !== null ||item.poster_path ? `${apiImageUrl}${item.poster_path}`: ImageDefalte} alt="" />
                             </Link>
                         </div>
                     ))

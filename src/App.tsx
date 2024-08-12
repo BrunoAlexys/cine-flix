@@ -5,6 +5,7 @@ import { ContentSlider } from './components/contentSlider/contentSlider'
 import { useMoviesGenere, useTopMovies } from './service/movies/queriesMovies'
 import { useTv } from './service/series/queriesSeries';
 import { useEffect } from 'react';
+import ImageDefaulte from './assets/DeadpoolNotFound.png';
 
 function App() {
 
@@ -27,7 +28,6 @@ function App() {
   if (!apiImageUrl) {
     console.error('API Image URL not found');
   }
-
   useEffect(() => {
     document.title = 'Cineflix';
   }, []);
@@ -43,7 +43,7 @@ function App() {
         settings={settings}
         keyExtractor={movie => movie.id}
         renderItem={movie => (
-          <img src={`${apiImageUrl}${movie.poster_path}`} />
+          <img src={apiImageUrl !== null || apiImageUrl	? `${apiImageUrl}${movie.poster_path}` : ImageDefaulte} />
         )}
         type='movies'
       />
@@ -55,7 +55,7 @@ function App() {
         settings={settings}
         keyExtractor={tv => tv.id}
         renderItem={tv => (
-          <img src={`${apiImageUrl}${tv.poster_path}`} />
+          <img src={apiImageUrl !== null || apiImageUrl ? `${apiImageUrl}${tv.poster_path}` : ImageDefaulte} />
         )}
         type='series'
       />
@@ -67,7 +67,7 @@ function App() {
         settings={settings}
         keyExtractor={movies => movies.id}
         renderItem={movie => (
-          <img src={`${apiImageUrl}${movie.poster_path}`} />
+          <img src={apiImageUrl !== null || apiImageUrl ? `${apiImageUrl}${movie.poster_path}` : ImageDefaulte} />
         )}
         type='movies'
       />
@@ -79,7 +79,7 @@ function App() {
         settings={settings}
         keyExtractor={movie => movie.id}
         renderItem={movie => (
-          <img src={`${apiImageUrl}${movie.poster_path}`} />
+          <img src={apiImageUrl !== null || apiImageUrl ? `${apiImageUrl}${movie.poster_path}`: ImageDefaulte} />
         )}
         type='movies'
       />

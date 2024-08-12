@@ -8,6 +8,7 @@ import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useEffect } from 'react';
 import { Comments } from '../../components/comments/Comments';
+import ImageDefaulte from '../../assets/DeadpoolNotFound.png';
 
 
 export const Avaliation = () => {
@@ -23,12 +24,12 @@ export const Avaliation = () => {
     useEffect(() => {
         document.title = 'Cineflix | ' + (avaliation.data?.title ?? avaliation.data?.name);
     }, [avaliation.data?.title, avaliation.data?.name]);
-
-    return (
+    const poster =  avaliation.data?.poster_path !== null || avaliation.data?.poster_path ?  `${apiImageUrl}${avaliation.data?.poster_path}`: ImageDefaulte ;
+    return ( 
         <div>
             <div className='container-avaliation'>
                 <div className='container-poster'>
-                    <img src={`${apiImageUrl}${avaliation.data?.poster_path}`} alt={avaliation.data?.title} />
+                    <img src={poster} alt={avaliation.data?.title} />
                 </div>
                 <div className='container-description'>
                     <div className='container-desc'>
@@ -37,7 +38,7 @@ export const Avaliation = () => {
                         </div>
                         <div className='container-actions'>
                             <div style={{ width: 60, height: 60 }}>
-                                <CircularProgressbar value={voteAverage} text={`${voteAverage.toFixed(2)} %`} styles={buildStyles({ pathColor: '#21D07A', textColor: '#fff', textSize: '18px'})} />
+                                <CircularProgressbar value={voteAverage} text={`${voteAverage.toFixed(2)} %`} styles={buildStyles({ pathColor: '#21D07A', textColor: '#fff', textSize: '18px' })} />
                             </div>
                             <div className='action'><img src={Listar} alt="Icone de ação de listar" /></div>
                             <div className='action'><img src={Curtir} alt="Icone de ação dos favoritos" /></div>
