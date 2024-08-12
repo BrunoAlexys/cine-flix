@@ -87,3 +87,17 @@
 .sinopse-text {
     font-size: 22px;
 }
+
+.container-line {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line {
+    margin-top: 20px;
+    width: 95%;
+    margin-bottom: 8px;
+    border-bottom: #FFFFFF 4px solid;
+}

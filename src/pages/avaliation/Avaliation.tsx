@@ -37,7 +37,7 @@ export const Avaliation = () => {
                         </div>
                         <div className='container-actions'>
                             <div style={{ width: 60, height: 60 }}>
-                                <CircularProgressbar value={voteAverage} text={`${voteAverage.toFixed(2)} %`} styles={buildStyles({ pathColor: '#21D07A', textColor: '#fff', textSize: '18px'})} />
+                                <CircularProgressbar value={voteAverage} text={`${voteAverage.toFixed(2)} %`} styles={buildStyles({ pathColor: '#21D07A', textColor: '#fff', textSize: '18px' })} />
                             </div>
                             <div className='action'><img src={Listar} alt="Icone de ação de listar" /></div>
                             <div className='action'><img src={Curtir} alt="Icone de ação dos favoritos" /></div>
@@ -49,6 +49,9 @@ export const Avaliation = () => {
                         <p className='sinopse-text'>{avaliation.data?.overview || 'Oops! A sinopse decidiu tirar um dia de folga. Volte mais tarde para ver se ela voltou! 😄'}</p>
                     </div>
                 </div>
+            </div>
+            <div className='container-line'>
+                <div className='line'></div>
             </div>
             <Comments />
         </div>
