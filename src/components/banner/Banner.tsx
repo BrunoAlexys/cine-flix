@@ -2,6 +2,7 @@ import { SwiperProps, SwiperSlide } from 'swiper/react';
 import { Slider } from '../slider/Slider';
 import './Banner.css';
 import { usePopularMovies } from '../../service/movies/queriesMovies';
+import { Link } from 'react-router-dom';
 
 export const Banner = () => {
 
@@ -37,7 +38,9 @@ export const Banner = () => {
                     {movies.isLoading && <div>Loading...</div>}
                     {movies.data && movies.data.map((movie) => (
                         <SwiperSlide key={movie.id}>
-                            <img src={`${apiImageUrl}${movie.poster_path}`} alt={movie.title} />
+                            <Link to={`/avaliation/movies/${movie.id}`}>
+                                <img src={`${apiImageUrl}${movie.poster_path}`} alt={movie.title} />
+                            </Link>
                         </SwiperSlide>
                     ))}
                 </Slider>

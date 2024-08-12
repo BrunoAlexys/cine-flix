@@ -4,17 +4,17 @@ import { useEffect, useState } from 'react';
 import { usePaginatedMovies } from '../../service/movies/queriesMovies';
 import { usePaginatedTv } from '../../service/series/queriesSeries';
 import { Pagination } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 type CatalogType = {
-    type: 'movies' | 'series' | 'realeases';
+    type: 'movies' | 'series';
 }
 
 export const Catalog = () => {
 
     const { type } = useParams<CatalogType>();
-    const title = type === 'movies' ? 'Filmes' : type === 'series' ? 'Séries' : 'Lançamentos';
+    const title = type === 'movies' ? 'Filmes' : 'Séries';
 
-    // const paginatedLimit = 18;
     const [page, setPage] = useState(1);
 
     const movies = usePaginatedMovies(page);
@@ -24,22 +24,24 @@ export const Catalog = () => {
     const apiImageUrl = import.meta.env.VITE_API_IMAGE;
 
     useEffect(() => {
-        document.title = title;
+        document.title = 'Cineflix | ' + title;
         setPage(1);
     }, [title, type]);
 
-    {movies.isLoading || series.isLoading && <div className='loading'>Carregando...</div>}
+    { movies.isLoading || series.isLoading && <div className='loading'>Carregando...</div> }
     return (
         <div className='container-catalog'>
             <div className='catalog'>
                 <h1>{title}</h1>
             </div>
-            
+
             <div className='container-card'>
                 {data &&
                     data.results.map(item => (
                         <div className='card' key={item.id}>
-                            <img src={`${apiImageUrl}${item.poster_path}`} />
+                            <Link to={`/avaliation/${type}/${item.id}`}>
+                                <img src={`${apiImageUrl}${item.poster_path}`} alt="" />
+                            </Link>
                         </div>
                     ))
                 }
@@ -50,8 +52,8 @@ export const Catalog = () => {
                         color: 'white', // Altera a cor dos números
                     },
                 }}
-                page={page} 
-                onChange={(event, value) => setPage(value)}
+                    page={page}
+                    onChange={(_, value) => setPage(value)}
                 />
             </div>
         </div>

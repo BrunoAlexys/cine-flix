@@ -99,3 +99,4 @@ export const getMoviesGenere = async (idGenere: number): Promise<Movie[]> => {
         throw error;
     }
 }
+

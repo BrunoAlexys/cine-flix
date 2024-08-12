@@ -24,7 +24,7 @@ const Rodape = () => {
                     <li>Feedback</li>
                     <li>Termos da conta</li>
                 </div>
-                <div className="termos">
+                <div className="termos mr">
                     <h2>Termos de Privacidade</h2>
                     <li>Uso Legal</li>
                     <li>Termos</li>

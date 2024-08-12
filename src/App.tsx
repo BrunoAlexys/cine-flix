@@ -29,7 +29,7 @@ function App() {
   }
 
   useEffect(() => {
-    document.title = 'Cineflex';
+    document.title = 'Cineflix';
   }, []);
 
   return (
@@ -45,6 +45,7 @@ function App() {
         renderItem={movie => (
           <img src={`${apiImageUrl}${movie.poster_path}`} />
         )}
+        type='movies'
       />
 
       <ContentSlider
@@ -56,6 +57,7 @@ function App() {
         renderItem={tv => (
           <img src={`${apiImageUrl}${tv.poster_path}`} />
         )}
+        type='series'
       />
 
       <ContentSlider
@@ -63,10 +65,11 @@ function App() {
         data={moviesAcao.data}
         isLoading={moviesAcao.isLoading}
         settings={settings}
-        keyExtractor={movie => movie.id}
+        keyExtractor={movies => movies.id}
         renderItem={movie => (
           <img src={`${apiImageUrl}${movie.poster_path}`} />
         )}
+        type='movies'
       />
 
       <ContentSlider
@@ -78,6 +81,7 @@ function App() {
         renderItem={movie => (
           <img src={`${apiImageUrl}${movie.poster_path}`} />
         )}
+        type='movies'
       />
 
     </div>
