@@ -1,7 +1,25 @@
 .container {
     display: flex;
     width: 100%;
-    background-color: black;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 40px;
+}
+
+.title {
+    width: 100%;
+    margin-top: 40px;
+    margin-left: 90px;
+}
+
+.titleText {
+    color: #fff;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .perfil {
@@ -18,7 +36,7 @@
     object-fit: cover;
 }
 
-.comment {
+.commentSend {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,4 +51,72 @@
     height: 61px;
     border-radius: 100%;
     background-color: #16294E;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.send:hover {
+    animation: pulse 0.6s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.input {
+    width: 780px;
+    height: 50px;
+    outline: none;
+}
+
+.comment {
+    width: 1200px;
+    height: 230px;
+    background-color: #29344B;
+}
+
+.containerComment {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.containerPerfil {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.perfilSm {
+    display: flex;
+    width: 49px;
+    height: 49px;
+    border-radius: 100%;
+    background-color: #fff;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.name {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.containerMensage {
+    max-width: 1100px;
+    max-height: 120px;
+    margin-left: 85px;
+}
+
+.mensage {
+    color: #fff;
 }

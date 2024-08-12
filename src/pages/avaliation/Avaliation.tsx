@@ -51,6 +51,9 @@ export const Avaliation = () => {
                     </div>
                 </div>
             </div>
+            <div className='container-line'>
+                <div className='line'></div>
+            </div>
             <Comments />
         </div>
     );
