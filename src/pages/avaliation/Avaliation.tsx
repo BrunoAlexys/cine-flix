@@ -17,14 +17,16 @@ export const Avaliation = () => {
 
     const avaliation = useGetAvaliation(Number(id), type as 'movies' | 'series');
     const apiImageUrl = import.meta.env.VITE_API_IMAGE;
-    // const apiPosterUrl = import.meta.env.VITE_API_IMAGE_BACKDROP;
+
     const voteAverage = Number(avaliation.data?.vote_average) * 10;
     console.log(avaliation.data);
 
     useEffect(() => {
         document.title = 'Cineflix | ' + (avaliation.data?.title ?? avaliation.data?.name);
     }, [avaliation.data?.title, avaliation.data?.name]);
-    const poster =  avaliation.data?.poster_path !== null || avaliation.data?.poster_path ?  `${apiImageUrl}${avaliation.data?.poster_path}`: ImageDefaulte ;
+
+    const poster =  avaliation.data?.poster_path !== null  ?  `${apiImageUrl}${avaliation.data?.poster_path}`: ImageDefaulte ;
+
     return ( 
         <div>
             <div className='container-avaliation'>

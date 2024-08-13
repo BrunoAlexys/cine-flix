@@ -43,7 +43,7 @@ function App() {
         settings={settings}
         keyExtractor={movie => movie.id}
         renderItem={movie => (
-          <img src={apiImageUrl !== null || apiImageUrl	? `${apiImageUrl}${movie.poster_path}` : ImageDefaulte} />
+          <img src={apiImageUrl !== null ? `${apiImageUrl}${movie.poster_path}` : ImageDefaulte} />
         )}
         type='movies'
       />
@@ -55,7 +55,7 @@ function App() {
         settings={settings}
         keyExtractor={tv => tv.id}
         renderItem={tv => (
-          <img src={apiImageUrl !== null || apiImageUrl ? `${apiImageUrl}${tv.poster_path}` : ImageDefaulte} />
+          <img src={apiImageUrl !== null ? `${apiImageUrl}${tv.poster_path}` : ImageDefaulte} />
         )}
         type='series'
       />
@@ -67,7 +67,7 @@ function App() {
         settings={settings}
         keyExtractor={movies => movies.id}
         renderItem={movie => (
-          <img src={apiImageUrl !== null || apiImageUrl ? `${apiImageUrl}${movie.poster_path}` : ImageDefaulte} />
+          <img src={apiImageUrl !== null ? `${apiImageUrl}${movie.poster_path}` : ImageDefaulte} />
         )}
         type='movies'
       />
@@ -79,7 +79,7 @@ function App() {
         settings={settings}
         keyExtractor={movie => movie.id}
         renderItem={movie => (
-          <img src={apiImageUrl !== null || apiImageUrl ? `${apiImageUrl}${movie.poster_path}`: ImageDefaulte} />
+          <img src={apiImageUrl !== null ? `${apiImageUrl}${movie.poster_path}`: ImageDefaulte} />
         )}
         type='movies'
       />

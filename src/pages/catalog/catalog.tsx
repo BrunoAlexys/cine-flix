@@ -30,6 +30,7 @@ export const Catalog = () => {
     }, [title, type]);
 
     { movies.isLoading || series.isLoading && <div className='loading'>Carregando...</div> }
+    
     return (
         <div className='container-catalog'>
             <div className='catalog'>
@@ -41,7 +42,7 @@ export const Catalog = () => {
                     data.results.map(item => (
                         <div className='card' key={item.id}>
                             <Link to={`/avaliation/${type}/${item.id}`}>
-                                <img src={item.poster_path !== null ||item.poster_path ? `${apiImageUrl}${item.poster_path}`: ImageDefalte} alt="" />
+                                <img src={item.poster_path !== null ? `${apiImageUrl}${item.poster_path}`: ImageDefalte} alt="" />
                             </Link>
                         </div>
                     ))

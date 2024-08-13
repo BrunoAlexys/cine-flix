@@ -27,6 +27,7 @@ export const Header = () => {
                     placeholder="Pesquisar"
                     value={search}
                     onChange={e => setSearch(e.target.value)} 
+                    className='input-com-lupa'
                 />
                 <img src={Lupa} alt="Lupa de pesquisa" />
             </div>
