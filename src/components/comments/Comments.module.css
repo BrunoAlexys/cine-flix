@@ -4,6 +4,7 @@
     flex-direction: column;
     gap: 30px;
     margin-left: 40px;
+    margin-bottom: 40px;
 }
 
 .title {
@@ -119,4 +120,29 @@
 
 .mensage {
     color: #fff;
+}
+
+.loadMoreContainer {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left: 30%;
+    margin-bottom: 40px;
+}
+
+.loadMoreButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 200px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-family: "Hammersmith One", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
 }
