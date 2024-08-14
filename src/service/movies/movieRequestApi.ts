@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Movie } from "../../type/movie";
-import { MovieResponse } from "../../type/movieResponse";
-import { PaginatedMoviesResponse } from "../../type/paginatedMovies";
+import { PaginatedMediaResponse } from "../../type/paginatedMediaResponse";
+import { MediaItem } from "../../type/mediaItem";
+import { MediaResponse } from "../../type/mediaResponse";
 
 
 const apiUrl = import.meta.env.VITE_API;
@@ -15,9 +15,9 @@ const req = axios.create({
     baseURL: apiUrl
 });
 
-export const getTopMovies = async (): Promise<Movie[]> => {
+export const getTopMovies = async (): Promise<MediaItem[]> => {
     try {
-        const response = await req.get<MovieResponse>("top_rated", {
+        const response = await req.get<MediaResponse>("top_rated", {
             params: {
                 api_key: apiKey,
                 language: 'pt-BR'
@@ -31,9 +31,9 @@ export const getTopMovies = async (): Promise<Movie[]> => {
     }
 };
 
-export const getPopularMovies = async (): Promise<Movie[]> => {
+export const getPopularMovies = async (): Promise<MediaItem[]> => {
     try {
-        const response = await req.get<MovieResponse>("popular", {
+        const response = await req.get<MediaResponse>("popular", {
             params: {
                 api_key: apiKey,
                 language: 'pt-BR'
@@ -47,9 +47,9 @@ export const getPopularMovies = async (): Promise<Movie[]> => {
     }
 };
 
-export const getNowPlaying = async (): Promise<Movie[]> => {
+export const getNowPlaying = async (): Promise<MediaItem[]> => {
     try {
-        const response = await req.get<MovieResponse>("now_playing", {
+        const response = await req.get<MediaResponse>("now_playing", {
             params: {
                 api_key: apiKey,
                 language: 'pt-BR'
@@ -63,9 +63,9 @@ export const getNowPlaying = async (): Promise<Movie[]> => {
     }
 }
 
-export const getPaginatedMovies = async (page: number): Promise<PaginatedMoviesResponse> => {
+export const getPaginatedMovies = async (page: number): Promise<PaginatedMediaResponse> => {
     try {
-        const response = await req.get<MovieResponse>('popular', {
+        const response = await req.get<MediaResponse>('popular', {
             params: {
                 api_key: apiKey,
                 language: 'pt-BR',
@@ -83,9 +83,9 @@ export const getPaginatedMovies = async (page: number): Promise<PaginatedMoviesR
     }
 }
 
-export const getMoviesGenere = async (idGenere: number): Promise<Movie[]> => {
+export const getMoviesGenere = async (idGenere: number): Promise<MediaItem[]> => {
     try {
-        const response = await req.get<MovieResponse>('https://api.themoviedb.org/3/discover/movie', {
+        const response = await req.get<MediaResponse>('https://api.themoviedb.org/3/discover/movie', {
             params: {
                 api_key: apiKey,
                 language: 'pt-BR',
@@ -96,6 +96,23 @@ export const getMoviesGenere = async (idGenere: number): Promise<Movie[]> => {
         return response.data.results;
     } catch (error) {
         console.error("Erro ao buscar os filmes de ação:", error);
+        throw error;
+    }
+}
+
+export const searchMoviesByTitle = async (title: string): Promise<MediaItem[]> => {
+    try {
+        const response = await req.get<MediaResponse>('https://api.themoviedb.org/3/search/movie', {
+            params: {
+                api_key: apiKey,
+                language: 'pt-BR',
+                query: title
+            }
+        })
+
+        return response.data.results;
+    } catch (error) {
+        console.error("Erro ao buscar os filmes pelo título:", error);
         throw error;
     }
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Tv } from "../../type/tv";
-import { TvResponse } from "../../type/tvResponse";
-import { PaginatedSeriesResponse } from "../../type/paginatedSeries";
+import { MediaItem } from "../../type/mediaItem";
+import { PaginatedMediaResponse } from "../../type/paginatedMediaResponse";
+import { MediaResponse } from "../../type/mediaResponse";
 
 
 const apiTvUrl = import.meta.env.VITE_API_TV;
@@ -15,9 +15,9 @@ const reqTv = axios.create({
     baseURL: apiTvUrl
 });
 
-export const getTv = async (): Promise<Tv[]> => {
+export const getTv = async (): Promise<MediaItem[]> => {
     try {
-        const response = await reqTv.get<TvResponse>("popular", {
+        const response = await reqTv.get<MediaResponse>("popular", {
             params: {
                 api_key: apiKey,
                 language: 'pt-BR'
@@ -31,9 +31,9 @@ export const getTv = async (): Promise<Tv[]> => {
     }
 }
 
-export const getPaginatedTv = async (page: number): Promise<PaginatedSeriesResponse> => {
+export const getPaginatedTv = async (page: number): Promise<PaginatedMediaResponse> => {
     try {
-        const response = await reqTv.get<TvResponse>('popular', {
+        const response = await reqTv.get<MediaResponse>('popular', {
             params: {
                 api_key: apiKey,
                 language: 'pt-BR',
@@ -47,6 +47,23 @@ export const getPaginatedTv = async (page: number): Promise<PaginatedSeriesRespo
         };
     } catch (error) {
         console.error("Erro ao buscar as séries mais populares:", error);
+        throw error;
+    }
+}
+
+export const searchSeriesByTitle = async (title: string): Promise<MediaItem[]> => {
+    try {
+        const response = await reqTv.get<MediaResponse>('https://api.themoviedb.org/3/search/tv', {
+            params: {
+                api_key: apiKey,
+                language: 'pt-BR',
+                query: title
+            }
+        });
+        
+        return response.data.results;
+    } catch (error) {
+        console.error("Erro ao buscar as séries por título:", error);
         throw error;
     }
 }

@@ -83,7 +83,6 @@ function App() {
         )}
         type='movies'
       />
-
     </div>
   )
 }
