@@ -16,7 +16,10 @@ export const Catalog = () => {
     const { type } = useParams<CatalogType>();
     const title = type === 'movies' ? 'Filmes' : 'Séries';
 
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState<number>(() => {
+        const savedPage = localStorage.getItem(`${type}-page`);
+        return savedPage ? parseInt(savedPage, 10) : 1;
+    });
 
     const movies = usePaginatedMovies(page);
     const series = usePaginatedTv(page);
@@ -26,11 +29,21 @@ export const Catalog = () => {
 
     useEffect(() => {
         document.title = 'Cineflix | ' + title;
-        setPage(1);
-    }, [title, type]);
+        window.scrollTo(0, 0);
+        localStorage.setItem(`${type}-page`, page.toString());
+    }, [title, type, page]);
 
-    { movies.isLoading || series.isLoading && <div className='loading'>Carregando...</div> }
-    
+    useEffect(() => {
+        const savedPage = localStorage.getItem(`${type}-page`);
+        if (savedPage) {
+            setPage(parseInt(savedPage, 10));
+        }
+    }, [type]);
+
+    if (movies.isLoading || series.isLoading) {
+        return <div className='loading'>Carregando...</div>;
+    }
+
     return (
         <div className='container-catalog'>
             <div className='catalog'>
@@ -42,7 +55,7 @@ export const Catalog = () => {
                     data.results.map(item => (
                         <div className='card' key={item.id}>
                             <Link to={`/avaliation/${type}/${item.id}`}>
-                                <img src={item.poster_path !== null ? `${apiImageUrl}${item.poster_path}`: ImageDefalte} alt="" />
+                                <img src={item.poster_path !== null ? `${apiImageUrl}${item.poster_path}` : ImageDefalte} alt="" />
                             </Link>
                         </div>
                     ))

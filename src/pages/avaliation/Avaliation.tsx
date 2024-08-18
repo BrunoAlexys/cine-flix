@@ -23,11 +23,12 @@ export const Avaliation = () => {
 
     useEffect(() => {
         document.title = 'Cineflix | ' + (avaliation.data?.title ?? avaliation.data?.name);
+        window.scrollTo(0, 0);
     }, [avaliation.data?.title, avaliation.data?.name]);
 
-    const poster =  avaliation.data?.poster_path !== null  ?  `${apiImageUrl}${avaliation.data?.poster_path}`: ImageDefaulte ;
+    const poster = avaliation.data?.poster_path !== null ? `${apiImageUrl}${avaliation.data?.poster_path}` : ImageDefaulte;
 
-    return ( 
+    return (
         <div>
             <div className='container-avaliation'>
                 <div className='container-poster'>
