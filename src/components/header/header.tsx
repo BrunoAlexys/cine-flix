@@ -9,6 +9,9 @@ import { searchMoviesByTitle } from '../../service/movies/movieRequestApi';
 import { MediaItem } from '../../type/mediaItem';
 import { debounce } from 'lodash';
 import { searchSeriesByTitle } from '../../service/series/serieRequestApi';
+import Person from '../../assets/person2.png';
+import Logout from '../../assets/sair-do-usuario1.png'
+import Setting from '../../assets/settings1.png'
 
 
 type SearchResult = MediaItem;
@@ -18,8 +21,29 @@ export const Header = () => {
     const [search, setSearch] = useState('');
     const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
     const [showResults, setShowResults] = useState(false);
+    const [showMenu, setMenu] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     const resultsRef = useRef<HTMLDivElement>(null);
+
+    const aoAbrirOMenu = () => {
+        setMenu(true);
+    };
+
+    // useEffect para fechar o menu ao clicar fora
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+                setMenu(false); // Fecha o menu ao clicar fora
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
 
     const handleSearch = async (query: string) => {
         try {
@@ -99,7 +123,7 @@ export const Header = () => {
                 <p><Link style={{ color: 'white' }} to={`/`}>Home</Link></p>
                 <p><Link style={{ color: 'white' }} to={`/catalog/movies`}>Filmes</Link></p>
                 <p><Link style={{ color: 'white' }} to={`/catalog/series`}>Séries</Link></p>
-                <p>Catálago</p>
+                <p>Gênero</p>
             </div>
             <div className="pesquisa">
                 <Input
@@ -123,7 +147,29 @@ export const Header = () => {
                 )}
             </div>
             <div className="perfil">
-                <img src={Perfil} alt="Perfil" />
+                {!showMenu && (
+                    <img onClick={aoAbrirOMenu} src={Perfil} alt="Perfil" />
+                )}
+                {showMenu && (
+                    <div ref={menuRef} className="menuAoClicar">
+                        <img src={Perfil} alt="Logo-perfil" />
+                        <div className='linha'></div>
+                        <ul>
+                            <li>
+                                <img src={Person} alt="Icon perfil" />
+                                Login
+                            </li>
+                            <li>
+                                <img src={Setting} alt="configurações" />
+                                Settings
+                            </li>
+                            <li>
+                                <img src={Logout} alt="Icon sair" />
+                                Logout
+                            </li>
+                        </ul>
+                    </div>
+                )}
             </div>
         </header>
     );

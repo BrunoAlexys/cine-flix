@@ -3,12 +3,13 @@
   width: 100%;
   height: 110px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly ;
   align-items: center;
 
   & img {
     width: 33px;
     height: 33px;
+
   }
 
   & .logo {
@@ -32,7 +33,8 @@
   }
 
   .input-com-lupa {
-    padding-left: 40px; /* Adiciona espaço à esquerda para a lupa */
+    padding-left: 40px;
+    /* Adiciona espaço à esquerda para a lupa */
   }
 
   .pesquisa img {
@@ -45,9 +47,11 @@
   }
 
   & .perfil {
+    cursor: pointer;
     display: flex;
     align-items: center;
   }
+  
 }
 
 header {
@@ -79,8 +83,10 @@ header {
 }
 
 .search-results {
-  max-height: 200px; /* Altura máxima antes de ativar a rolagem */
-  overflow-y: auto; /* Ativa a rolagem vertical se necessário */
+  max-height: 200px;
+  /* Altura máxima antes de ativar a rolagem */
+  overflow-y: auto;
+  /* Ativa a rolagem vertical se necessário */
 }
 
 /* Estilo específico para a barra de rolagem dentro de search-results */
@@ -95,4 +101,47 @@ header {
 
 .search-results::-webkit-scrollbar-track {
   background-color: #333;
+}
+
+.menuAoClicar {
+  background-color: #131926;
+  width: 240px;
+  height: 300px;
+  cursor: pointer;
+  display: flex;
+  justify-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 190px;
+  color: #FFFFFF;
+}
+
+.menuAoClicar img {
+  margin-top: 15%;
+}
+
+.menuAoClicar ul {
+  display: flex;
+  margin-top: 14%;
+  align-content: center;
+  flex-direction: column;
+  margin-right: 10%;
+}
+
+.menuAoClicar li {
+  margin-bottom: 30%;
+  display: flex;
+}
+
+.menuAoClicar li img {
+  margin-bottom: 0;
+  margin-top: 0;
+  margin-right: 20%;
+  width: 20px;
+  height: 20px;
+}
+
+.menuAoClicar .linha {
+  width: 90%;
+  border-bottom: #FFFFFF solid 3px;
 }
