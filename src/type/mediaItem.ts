@@ -20,4 +20,6 @@ export type MediaItem = {
     origin_country?: string[];
     original_name?: string;
     rating?: number;
+
+    mediaType: 'movies' | 'series';
 };

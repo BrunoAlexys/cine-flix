@@ -77,3 +77,22 @@ header {
     background-color: #142343;
   }
 }
+
+.search-results {
+  max-height: 200px; /* Altura máxima antes de ativar a rolagem */
+  overflow-y: auto; /* Ativa a rolagem vertical se necessário */
+}
+
+/* Estilo específico para a barra de rolagem dentro de search-results */
+.search-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background-color: #333;
+}
