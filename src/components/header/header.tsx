@@ -44,11 +44,6 @@ export const Header = () => {
                 .map(id => combinedResults.find(item => item?.id === id))
                 .filter((item): item is MediaItem => item !== undefined);
 
-
-            let i = 1;
-
-            uniqueResults.map(item => console.log(`Item ${i++}: ${item.id} - ${item.mediaType} - ${item.title || item.name}`));
-
             // Define os resultados na lista de resultados de busca
             setSearchResults(uniqueResults);
         } catch (error) {
@@ -64,6 +59,7 @@ export const Header = () => {
 
     const handleResultClick = () => {
         setShowResults(false);
+        setSearch('');
     };
 
     useEffect(() => {
