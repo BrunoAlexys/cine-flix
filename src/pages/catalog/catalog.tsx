@@ -30,15 +30,13 @@ export const Catalog = () => {
     useEffect(() => {
         document.title = 'Cineflix | ' + title;
         window.scrollTo(0, 0);
-        localStorage.setItem(`${type}-page`, page.toString());
-    }, [title, type, page]);
+        const savedPage = localStorage.getItem(`${type}-page`);
+        setPage(savedPage ? parseInt(savedPage, 10) : 1);
+    }, [title, type]);
 
     useEffect(() => {
-        const savedPage = localStorage.getItem(`${type}-page`);
-        if (savedPage) {
-            setPage(parseInt(savedPage, 10));
-        }
-    }, [type]);
+        localStorage.setItem(`${type}-page`, page.toString());
+    }, [type, page]);
 
     if (movies.isLoading || series.isLoading) {
         return <div className='loading'>Carregando...</div>;
